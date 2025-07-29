@@ -7,15 +7,23 @@ import { useState } from "react";
 export default function Home() {
   const [donationType, setDonationType] = useState(true); // true for one-off, false for monthly
   const [selectedMenu, setSelectedMenu] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const images = [
+    "/images/coffee.jpg",
+    "/images/architecture-signs.jpg",
+    "/images/man-on-a-street.jpg",
+    "/images/three-dogs.jpg",
+  ];
 
   return (
     <main className="flex flex-col h-screen w-screen font-[Montserrat]">
       {/* Main body */}
       <div className="grow flex items-center justify-center gap-3 w-full p-4">
         {/* Right part */}
-        <div className="relative flex h-full w-full rounded-2xl">
+        <div className="relative flex flex-col justify-between h-full w-full rounded-2xl transition delay-150 duration-300 ease-in-out">
           <Image
-            src="/images/coffee.jpg"
+            src={images[currentImage]}
             alt="Students"
             width={100000}
             height={100000}
@@ -129,6 +137,378 @@ export default function Home() {
               <div className="w-3 h-3 bg-white"></div>
               <p className="text-xs">Donation Basket: (0)</p>
             </button>
+          </div>
+          <div className="z-40 grid grid-cols-7 items-end w-full h-1/2">
+            <div className="col-span-3 flex items-center gap-2 h-full px-2">
+              <button
+                className={`size-3 rounded-full ${
+                  currentImage == 0
+                    ? "bg-blue-400"
+                    : "bg-white/20 backdrop-blue-md"
+                } cursor-pointer`}
+                onClick={() => setCurrentImage(0)}
+              ></button>
+              <button
+                className={`size-3 rounded-full ${
+                  currentImage == 1
+                    ? "bg-blue-400"
+                    : "bg-white/20 backdrop-blue-md"
+                } cursor-pointer`}
+                onClick={() => setCurrentImage(1)}
+              ></button>
+              <button
+                className={`size-3 rounded-full ${
+                  currentImage == 2
+                    ? "bg-blue-400"
+                    : "bg-white/20 backdrop-blue-md"
+                } cursor-pointer`}
+                onClick={() => setCurrentImage(2)}
+              ></button>
+              <button
+                className={`size-3 rounded-full ${
+                  currentImage == 3
+                    ? "bg-blue-400"
+                    : "bg-white/20 backdrop-blue-md"
+                } cursor-pointer`}
+                onClick={() => setCurrentImage(3)}
+              ></button>
+            </div>
+            <div className="row-start-2 col-span-3 flex items-center h-full px-2 text-white text-sm">
+              100% of your donation goes directly to students.
+              <br />
+              Transparent. Trackable. Tranformative.
+            </div>
+            <div className="relative row-start-3 col-span-3 flex items-center h-full px-2 rounded-tr-3xl bg-white">
+              <div className="absolute z-40 -top-5 left-0 w-14 h-5 rounded-bl-3xl shadow-[-30px_0px_0px_rgba(255,_255,_255,_255),_0_0px_0px_rgba(255,_255,_255,_255)]"></div>
+              <div className="absolute -z-40 bottom-0 -right-14 w-14 h-5 rounded-bl-3xl shadow-[-30px_0px_0px_rgba(255,_255,_255,_255),_0_0px_0px_rgba(255,_255,_255,_255)]"></div>
+              Give Every Child A Chance To Stay In School.
+            </div>
+            <div className="relative row-start-4 row-span-2 col-span-5 flex items-center h-full px-2 rounded-tr-3xl bg-white">
+              <div className="absolute -z-40 bottom-0 -right-14 w-14 h-8 rounded-bl-3xl shadow-[-30px_0px_0px_rgba(255,_255,_255,_255),_0_0px_0px_rgba(255,_255,_255,_255)]"></div>
+              <p className="text-6xl tracking-[.04em] font-[MontserratL]">
+                EDUCATION SHOULD <b className="font-[MontserratE]">NOT</b> BE A
+                LUXURY
+              </p>
+            </div>
+            <div className="row-span-3 row-start-1 col-start-4 col-span-2 flex flex-wrap items-end gap-1 mb-1.5 ml-1.5 text-xs text-white">
+              <button className="flex items-center justify-center gap-2 w-fit h-fit p-2 bg-white/20 backdrop-blur-md cursor-pointer rounded-full hover:bg-white/30 transition-colors duration-200">
+                <p className="text-xs">Track Donations</p>
+              </button>
+              <button className="flex items-center justify-center gap-2 w-fit h-fit p-2 bg-white/20 backdrop-blur-md cursor-pointer rounded-full hover:bg-white/30 transition-colors duration-200">
+                <p className="text-xs">Secure Giving</p>
+              </button>
+              <button className="flex items-center justify-center gap-2 w-fit h-fit p-2 bg-white/20 backdrop-blur-md cursor-pointer rounded-full hover:bg-white/30 transition-colors duration-200">
+                <p className="text-xs">Direct Sponsorship</p>
+              </button>
+              <button className="flex items-center justify-center gap-2 w-fit h-fit p-2 bg-white/20 backdrop-blur-md cursor-pointer rounded-full hover:bg-white/30 transition-colors duration-200">
+                <p className="text-xs">Student Impact</p>
+              </button>
+            </div>
+            <div className="row-span-5 col-start-6 col-span-2 flex flex-col justify-between h-full p-2 mr-1.5 mb-1.5 ml-2 bg-white/20 backdrop-blur-md rounded-3xl">
+              <p className="text-4xl text-white">Featured Campaigns</p>
+              <div className="flex flex-col items-center justify-center -space-y-16">
+                <div className="-z-30 flex w-full h-fit rounded-xl bg-white opacity-15 scale-25">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="-z-20 flex w-full h-fit rounded-xl bg-white opacity-20 scale-45">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="-z-20 flex w-full h-fit rounded-xl bg-white opacity-25 scale-65">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="-z-20 flex w-full h-fit rounded-xl bg-white opacity-30 scale-85">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="-z-10 flex w-full h-fit rounded-xl bg-white opacity-60">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="z-0 flex w-full h-fit rounded-xl bg-white">
+                  <div className="relative flex flex-col justify-end gap-y-1 w-1/4 h-full p-1">
+                    <Image
+                      src="/images/man-on-a-street.jpg"
+                      alt="Students"
+                      width={100000}
+                      height={100000}
+                      className="absolute -z-20 top-0 left-0 w-full h-full object-cover rounded-l-xl"
+                    />
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-red-400 text-white text-[6px]">
+                      2 days left
+                    </div>
+                    <div className="w-5/6 h-fit px-1 py-0.5 rounded-full bg-black/70 text-white text-[5px]">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between w-3/4 h-full p-2">
+                    <div className="flex items-center justify-between text-[7px]">
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                      <p className="uppercase">
+                        Batundu Government High School
+                      </p>
+                      <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px] font-[MontserratB]">
+                        Help Amina Finish School
+                      </p>
+                      <p className="text-[8px] line-clamp-1 font-[MontserratL]">
+                        Amina is a bright student who risks dropping
+                      </p>
+                      <div className="w-fit h-fit px-0.5 rounded-sm bg-blue-200 text-[8px] text-blue-400">
+                        School Supplies
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-x-2">
+                      <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between text-[6px]">
+                          <p className="line-clamp-1 font-[MontserratB]">6500 FCFA raised</p>
+                          <div className="w-2"></div>
+                          <p className="line-clamp-1">20000 FCFA needed</p>
+                        </div>
+                        <div className="w-full h-1.5 bg-blue-400 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-center w-7 h-6 border border-blue-400 rounded-full text-blue-400 text-[8px] font-[MontserratB]">
+                        38%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         {/* Left part */}
@@ -252,21 +632,21 @@ export default function Home() {
       <footer className="flex items-center justify-between py-4 mx-4 mb-4 border-y border-y-black">
         {/* Right side */}
         <div className="flex items-center gap-x-4">
-          <div className="flex justify-center -space-x-1 font-mono text-sm leading-6 font-bold text-white">
-            <div className="z-0 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white dark:outline-[#11121E]">
+          <div className="flex justify-center -space-x-1">
+            <div className="z-0 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white">
               04
             </div>
-            <div className="z-10 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white dark:outline-[#11121E]">
+            <div className="z-10 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white">
               03
             </div>
-            <div className="z-20 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white dark:outline-[#11121E]">
+            <div className="z-20 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white">
               02
             </div>
-            <div className="z-30 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white dark:outline-[#11121E]">
+            <div className="z-30 flex size-8 items-center justify-center rounded-full bg-pink-500 shadow-lg outline-2 outline-white">
               01
             </div>
           </div>
-          <p className="text-sm">
+          <p className="text-xs">
             500,000 Students Smile Bacause of Your Kindness
           </p>
         </div>
